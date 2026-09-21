@@ -1,0 +1,10 @@
+services:
+  review:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      PROJECT_ROOT: /app
+      PORT: "5000"

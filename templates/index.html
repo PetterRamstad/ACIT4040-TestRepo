@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interior Review</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div>
+        <p class="eyebrow">Apartment preference study</p>
+        <h1>Review the room set.</h1>
+        <p class="lede">Rate each reference image. Your choices are saved to the active dataset session.</p>
+      </div>
+      <div class="round-badge"><span id="round-label">Round --</span><strong id="progress">0 / 0</strong></div>
+    </header>
+
+    <section class="toolbar" aria-label="Review summary">
+      <div class="stat"><span>Liked</span><strong id="likes">0</strong></div>
+      <div class="stat"><span>Disliked</span><strong id="dislikes">0</strong></div>
+      <div class="stat"><span>Skipped</span><strong id="skips">0</strong></div>
+      <div class="stat"><span>Unrated</span><strong id="unrated">0</strong></div>
+      <div class="toolbar-actions">
+        <button class="reset" id="reset" type="button">Reset choices</button>
+        <button class="next-round" id="next-round" type="button">Next round</button>
+      </div>
+    </section>
+
+    <section id="message" class="message" role="status"></section>
+    <section id="gallery" class="gallery" aria-live="polite"></section>
+  </main>
+  <script>
+    const gallery = document.querySelector('#gallery');
+    const message = document.querySelector('#message');
+    let review = null;
+
+    function setMessage(text, error = false) {
+      message.textContent = text;
+      message.className = error ? 'message error' : 'message';
+    }
+
+    function render() {
+      document.querySelector('#round-label').textContent = `Round ${review.round}`;
+      const rated = review.candidates.filter(item => item.choice).length;
+      document.querySelector('#progress').textContent = `${rated} / ${review.candidates.length} rated`;
+      for (const key of ['likes', 'dislikes', 'skips', 'unrated']) {
+        document.querySelector(`#${key}`).textContent = review.counts[key === 'likes' ? 'like' : key === 'dislikes' ? 'dislike' : key];
+      }
+      gallery.innerHTML = review.candidates.map(candidate => `
+        <article class="card ${candidate.choice || ''}" data-id="${candidate.candidate_id}">
+          <div class="image-wrap"><img src="${candidate.image_url}" alt="${candidate.dataset_style} interior"></div>
+          <div class="card-body">
+            <div class="card-title"><h2>${candidate.candidate_id}</h2><span>${candidate.dataset_style}</span></div>
+            <div class="actions" role="group" aria-label="Preference for ${candidate.candidate_id}">
+              <button class="choice like" data-choice="like" type="button">Like</button>
+              <button class="choice dislike" data-choice="dislike" type="button">Dislike</button>
+              <button class="choice skip" data-choice="skip" type="button">Skip</button>
+            </div>
+            <div class="rating" aria-label="Rating for ${candidate.candidate_id}">
+              <span>Rating</span>
+              ${[1, 2, 3, 4, 5].map(value => `<button class="star ${candidate.rating >= value ? 'active' : ''}" data-rating="${value}" type="button" aria-label="${value} out of 5">${value}</button>`).join('')}
+            </div>
+          </div>
+        </article>`).join('');
+      gallery.querySelectorAll('.choice').forEach(button => button.addEventListener('click', () => update(button.closest('.card').dataset.id, { choice: button.dataset.choice, rating: getRating(button.closest('.card')) })));
+      gallery.querySelectorAll('.star').forEach(button => button.addEventListener('click', () => update(button.closest('.card').dataset.id, { choice: button.closest('.card').className.split(' ').find(value => ['like', 'dislike', 'skip'].includes(value)) || null, rating: Number(button.dataset.rating) })));
+    }
+
+    function getRating(card) {
+      const active = card.querySelectorAll('.star.active').length;
+      return active || null;
+    }
+
+    async function update(candidateId, payload) {
+      const response = await fetch(`/api/candidates/${candidateId}/feedback`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload) });
+      if (!response.ok) { setMessage((await response.json()).error || 'Could not save feedback.', true); return; }
+      review = await response.json();
+      render();
+      setMessage('Saved.');
+    }
+
+    document.querySelector('#reset').addEventListener('click', async () => {
+      for (const candidate of review.candidates) await update(candidate.candidate_id, { choice: null, rating: null });
+      setMessage('All choices reset.');
+    });
+
+    document.querySelector('#next-round').addEventListener('click', async () => {
+      const button = document.querySelector('#next-round');
+      button.disabled = true;
+      button.textContent = 'Preparing...';
+      setMessage('Preparing the next dataset round...');
+      const response = await fetch('/api/next-round', { method: 'POST' });
+      const data = await response.json();
+      button.disabled = false;
+      button.textContent = 'Next round';
+      if (!response.ok) { setMessage(data.error || 'Could not prepare the next round.', true); return; }
+      review = data;
+      render();
+      setMessage(`Round ${review.round} is ready.`);
+    });
+
+    fetch('/api/review').then(async response => {
+      if (!response.ok) throw new Error((await response.json()).error || 'Could not load review round.');
+      return response.json();
+    }).then(data => { review = data; render(); }).catch(error => setMessage(error.message, true));
+  </script>
+</body>
+</html>

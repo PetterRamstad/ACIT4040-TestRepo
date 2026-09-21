@@ -1,0 +1,103 @@
+{
+  "buyer": {
+    "name": "Demo buyer",
+    "intake": "I want a calm, warm and modern apartment. I like natural wood, soft neutral colours and comfortable furniture. I dislike cold grey interiors and rooms that feel cluttered."
+  },
+  "room": {
+    "name": "Demo living room",
+    "description": "A bright Scandinavian apartment living room with large windows, neutral walls and a simple rectangular layout."
+  },
+  "swipes": [
+    {
+      "id": "img_01",
+      "choice": "like",
+      "tags": [
+        "warm",
+        "natural_wood",
+        "soft_neutral",
+        "minimal"
+      ]
+    },
+    {
+      "id": "img_02",
+      "choice": "dislike",
+      "tags": [
+        "cold_grey",
+        "industrial",
+        "dark_metal"
+      ]
+    },
+    {
+      "id": "img_03",
+      "choice": "like",
+      "tags": [
+        "comfortable",
+        "warm_lighting",
+        "soft_neutral"
+      ]
+    },
+    {
+      "id": "img_04",
+      "choice": "dislike",
+      "tags": [
+        "cluttered",
+        "maximalist",
+        "dark"
+      ]
+    },
+    {
+      "id": "img_05",
+      "choice": "like",
+      "tags": [
+        "scandinavian",
+        "natural_wood",
+        "airy"
+      ]
+    },
+    {
+      "id": "img_06",
+      "choice": "dislike",
+      "tags": [
+        "cold",
+        "concrete",
+        "metal"
+      ]
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "model": "mock-offline-model",
+      "output_dir": "outputs\\round_01",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "probe_axis": "warmth",
+          "positive_tags": [
+            "warm",
+            "warm_lighting",
+            "natural_wood"
+          ],
+          "negative_tags": [
+            "cold",
+            "cold_grey"
+          ],
+          "choice": null
+        },
+        {
+          "candidate_id": "c2",
+          "probe_axis": "materials",
+          "positive_tags": [
+            "natural_wood",
+            "comfortable"
+          ],
+          "negative_tags": [
+            "concrete",
+            "dark_metal"
+          ],
+          "choice": null
+        }
+      ]
+    }
+  ]
+}

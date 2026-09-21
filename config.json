@@ -1,0 +1,12 @@
+{
+  "swarm_url": "http://localhost:7801",
+  "mock_swarm": false,
+  "model": "",
+  "images_per_round": 5,
+  "width": 1024,
+  "height": 1024,
+  "steps": 24,
+  "cfgscale": 6.5,
+  "negativeprompt": "blurry, low quality, distorted furniture, warped architecture, duplicate furniture, text, watermark",
+  "seed": -1
+}
