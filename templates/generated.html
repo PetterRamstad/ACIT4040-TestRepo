@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generated Preferences</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div>
+        <p class="eyebrow">Agent-guided generation</p>
+        <h1>Five rooms shaped by your taste.</h1>
+        <p class="lede">SwarmUI generated these images after the Ollama agent analyzed your rated images.</p>
+      </div>
+      <div class="round-badge"><span id="round-label">Generated round</span><strong id="count">0 images</strong></div>
+    </header>
+    <div class="generated-actions">
+      <a href="/">Back to review</a>
+      <button id="analysis-button" type="button">Show Ollama analysis</button>
+    </div>
+    <section id="analysis" class="agent-results" hidden></section>
+    <section id="gallery" class="gallery"></section>
+    <p id="message" class="message"></p>
+  </main>
+  <script>
+    const gallery = document.querySelector('#gallery');
+    const analysis = document.querySelector('#analysis');
+    fetch('/api/generated').then(async response => {
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Could not load generated images.');
+      document.querySelector('#round-label').textContent = `Generated round ${data.round}`;
+      document.querySelector('#count').textContent = `${data.images.length} images`;
+      gallery.innerHTML = data.images.map(item => `<article class="card"><div class="image-wrap"><img src="${item.image_url}" alt="SwarmUI generated interior ${item.candidate_id}"></div><div class="card-body"><div class="card-title"><h2>${item.candidate_id}</h2><span>SwarmUI</span></div></div></article>`).join('');
+      document.querySelector('#analysis-button').addEventListener('click', () => {
+        analysis.hidden = false;
+        analysis.innerHTML = `<div class="agent-heading"><span>Ollama preference agent</span><strong>Rated-image ranking</strong></div><p>Analyzed ${data.analysis.image_count} rated images with ${data.analysis.model}.</p><div class="agent-ranking">${data.analysis.ranking.slice(0, 20).map((item, index) => `<div class="agent-row"><b>#${index + 1}</b><span>${item.dataset_style}</span><strong>${item.analysis.score}/10</strong><p>${item.analysis.summary}</p></div>`).join('')}</div>`;
+      });
+    }).catch(error => document.querySelector('#message').textContent = error.message);
+  </script>
+</body>
+</html>

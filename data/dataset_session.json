@@ -1,0 +1,528 @@
+{
+  "buyer": {
+    "name": "Demo buyer",
+    "intake": "I want a calm, warm and modern apartment. I like natural wood, soft neutral colours and comfortable furniture. I dislike cold grey interiors and rooms that feel cluttered."
+  },
+  "room": {
+    "name": "Demo living room",
+    "description": "A bright Scandinavian apartment living room with large windows, neutral walls and a simple rectangular layout."
+  },
+  "swipes": [
+    {
+      "id": "img_01",
+      "choice": "like",
+      "tags": [
+        "warm",
+        "natural_wood",
+        "soft_neutral",
+        "minimal"
+      ]
+    },
+    {
+      "id": "img_02",
+      "choice": "dislike",
+      "tags": [
+        "cold_grey",
+        "industrial",
+        "dark_metal"
+      ]
+    },
+    {
+      "id": "img_03",
+      "choice": "like",
+      "tags": [
+        "comfortable",
+        "warm_lighting",
+        "soft_neutral"
+      ]
+    },
+    {
+      "id": "img_04",
+      "choice": "dislike",
+      "tags": [
+        "cluttered",
+        "maximalist",
+        "dark"
+      ]
+    },
+    {
+      "id": "img_05",
+      "choice": "like",
+      "tags": [
+        "scandinavian",
+        "natural_wood",
+        "airy"
+      ]
+    },
+    {
+      "id": "img_06",
+      "choice": "dislike",
+      "tags": [
+        "cold",
+        "concrete",
+        "metal"
+      ]
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_01",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_100.jpg",
+          "choice": "like",
+          "rating": 4
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_104.jpg",
+          "choice": "skip",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "coastal",
+          "source_image": "dataset_test\\dataset_test\\coastal\\coastal_101.jpg",
+          "choice": "dislike",
+          "rating": 2
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "contemporary",
+          "source_image": "dataset_test\\dataset_test\\contemporary\\contemporary_0.jpg",
+          "choice": "like",
+          "rating": 4
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "craftsman",
+          "source_image": "dataset_test\\dataset_test\\craftsman\\craftsman_100.jpg",
+          "choice": "like",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_02",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "contemporary",
+          "source_image": "dataset_test\\dataset_test\\contemporary\\contemporary_10.jpg",
+          "choice": "skip",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "craftsman",
+          "source_image": "dataset_test\\dataset_test\\craftsman\\craftsman_101.jpg",
+          "choice": "dislike",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_11.jpg",
+          "choice": "like",
+          "rating": 4
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_108.jpg",
+          "choice": "like",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "dataset_train",
+          "source_image": "dataset_train\\dataset_train\\asian\\asian_0.jpg",
+          "choice": "dislike",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_03",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_117.jpg",
+          "choice": "like",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "contemporary",
+          "source_image": "dataset_test\\dataset_test\\contemporary\\contemporary_113.jpg",
+          "choice": "dislike",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_110.jpg",
+          "choice": "like",
+          "rating": 4
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "craftsman",
+          "source_image": "dataset_test\\dataset_test\\craftsman\\craftsman_102.jpg",
+          "choice": "skip",
+          "rating": null
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "eclectic",
+          "source_image": "dataset_test\\dataset_test\\eclectic\\eclectic_1000.jpg",
+          "choice": "dislike",
+          "rating": 1
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_04",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_118.jpg",
+          "choice": "dislike",
+          "rating": 2
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_111.jpg",
+          "choice": "dislike",
+          "rating": 1
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "contemporary",
+          "source_image": "dataset_test\\dataset_test\\contemporary\\contemporary_115.jpg",
+          "choice": "dislike",
+          "rating": 2
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "craftsman",
+          "source_image": "dataset_test\\dataset_test\\craftsman\\craftsman_112.jpg",
+          "choice": "skip",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "farmhouse",
+          "source_image": "dataset_test\\dataset_test\\farmhouse\\farmhouse_100.jpg",
+          "choice": "like",
+          "rating": 3
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_05",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_120.jpg",
+          "choice": "like",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "farmhouse",
+          "source_image": "dataset_test\\dataset_test\\farmhouse\\farmhouse_104.jpg",
+          "choice": "like",
+          "rating": 4
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_114.jpg",
+          "choice": "like",
+          "rating": 5
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "craftsman",
+          "source_image": "dataset_test\\dataset_test\\craftsman\\craftsman_117.jpg",
+          "choice": "dislike",
+          "rating": 2
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "french-country",
+          "source_image": "dataset_test\\dataset_test\\french-country\\french-country_1.jpg",
+          "choice": "dislike",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "round": 6,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_06",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_121.jpg",
+          "choice": "dislike",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "farmhouse",
+          "source_image": "dataset_test\\dataset_test\\farmhouse\\farmhouse_106.jpg",
+          "choice": "like",
+          "rating": 4
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_116.jpg",
+          "choice": "like",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "mediterranean",
+          "source_image": "dataset_test\\dataset_test\\mediterranean\\mediterranean_0.jpg",
+          "choice": "dislike",
+          "rating": 2
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "mid-century-modern",
+          "source_image": "dataset_test\\dataset_test\\mid-century-modern\\mid-century-modern_10.jpg",
+          "choice": "like",
+          "rating": 4
+        }
+      ]
+    },
+    {
+      "round": 7,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_07",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_122.jpg",
+          "choice": "dislike",
+          "rating": 3
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "farmhouse",
+          "source_image": "dataset_test\\dataset_test\\farmhouse\\farmhouse_109.jpg",
+          "choice": "like",
+          "rating": 4
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "mid-century-modern",
+          "source_image": "dataset_test\\dataset_test\\mid-century-modern\\mid-century-modern_100.jpg",
+          "choice": "like",
+          "rating": 4
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_120.jpg",
+          "choice": "like",
+          "rating": 4
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "modern",
+          "source_image": "dataset_test\\dataset_test\\modern\\modern_1004.jpg",
+          "choice": "dislike",
+          "rating": 2
+        }
+      ]
+    },
+    {
+      "round": 8,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_08",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "farmhouse",
+          "source_image": "dataset_test\\dataset_test\\farmhouse\\farmhouse_112.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "mid-century-modern",
+          "source_image": "dataset_test\\dataset_test\\mid-century-modern\\mid-century-modern_103.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_128.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_123.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "rustic",
+          "source_image": "dataset_test\\dataset_test\\rustic\\rustic_1.jpg",
+          "choice": null
+        }
+      ]
+    },
+    {
+      "round": 9,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_09",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "farmhouse",
+          "source_image": "dataset_test\\dataset_test\\farmhouse\\farmhouse_113.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "mid-century-modern",
+          "source_image": "dataset_test\\dataset_test\\mid-century-modern\\mid-century-modern_114.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_129.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_129.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "rustic",
+          "source_image": "dataset_test\\dataset_test\\rustic\\rustic_10.jpg",
+          "choice": null
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "mode": "agent_swarm",
+      "output_dir": "outputs\\agent_round_03",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "choice": null
+        },
+        {
+          "candidate_id": "c2",
+          "choice": null
+        },
+        {
+          "candidate_id": "c3",
+          "choice": null
+        },
+        {
+          "candidate_id": "c4",
+          "choice": null
+        },
+        {
+          "candidate_id": "c5",
+          "choice": null
+        }
+      ]
+    },
+    {
+      "round": 10,
+      "mode": "dataset_reference",
+      "output_dir": "outputs\\dataset_round_10",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "dataset_style": "farmhouse",
+          "source_image": "dataset_test\\dataset_test\\farmhouse\\farmhouse_114.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c2",
+          "dataset_style": "mid-century-modern",
+          "source_image": "dataset_test\\dataset_test\\mid-century-modern\\mid-century-modern_125.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c3",
+          "dataset_style": "scandinavian",
+          "source_image": "dataset_test\\dataset_test\\scandinavian\\scandinavian_133.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c4",
+          "dataset_style": "asian",
+          "source_image": "dataset_test\\dataset_test\\asian\\asian_130.jpg",
+          "choice": null
+        },
+        {
+          "candidate_id": "c5",
+          "dataset_style": "rustic",
+          "source_image": "dataset_test\\dataset_test\\rustic\\rustic_111.jpg",
+          "choice": null
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "mode": "agent_swarm",
+      "output_dir": "outputs\\agent_round_04",
+      "candidates": [
+        {
+          "candidate_id": "c1",
+          "choice": null
+        },
+        {
+          "candidate_id": "c2",
+          "choice": null
+        },
+        {
+          "candidate_id": "c3",
+          "choice": null
+        },
+        {
+          "candidate_id": "c4",
+          "choice": null
+        },
+        {
+          "candidate_id": "c5",
+          "choice": null
+        }
+      ]
+    }
+  ]
+}

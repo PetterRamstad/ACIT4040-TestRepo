@@ -315,6 +315,43 @@ dataset pipeline using your saved choices, creates the next
 Previously shown dataset images are excluded until the available dataset has
 been exhausted. It does not contact SwarmUI or generate new images.
 
+Use **Reset choices** to clear likes, dislikes, skips, and ratings for the
+current round. Use **New session** to discard the current feedback history and
+start again from the original buyer preferences in `data\session.json`.
+
+## Local Preference Agent
+
+The web interface also includes an optional Ollama preference agent. Install
+Ollama separately, pull a vision-capable model, and configure these values in
+`.env`:
+
+```text
+OLLAMA_URL=http://localhost:11434
+OLLAMA_MODEL=llava
+```
+
+Then click **Analyze with agent**. The agent reviews every image that the user
+has rated in the saved review rounds, ranks those images against the buyer
+profile, and then sends five preference-based prompts to SwarmUI. The
+interface redirects to a generated results page showing the five new SwarmUI
+images. Use **Show Ollama analysis** there to view the ranking and
+explanations. The full structured result is saved as `agent_analysis.json` in
+the generated round.
+
+Rate at least one image before starting the agent pipeline. More rated images
+provide stronger evidence, but only reviewed images are sent to Ollama; the
+entire Kaggle dataset is not analyzed. The web interface shows progress while
+the rated images are processed, so keep Ollama and SwarmUI running.
+
+Ollama must have the configured vision model installed. In PowerShell, run:
+
+```powershell
+ollama run llava
+```
+
+The first run downloads the model. Keep the Ollama service running while using
+the agent. Verify that it is installed with `ollama list`.
+
 Stop the interface with:
 
 ```powershell

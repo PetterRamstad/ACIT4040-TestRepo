@@ -24,11 +24,14 @@
       <div class="stat"><span>Unrated</span><strong id="unrated">0</strong></div>
       <div class="toolbar-actions">
         <button class="reset" id="reset" type="button">Reset choices</button>
+        <button class="new-session" id="new-session" type="button">New session</button>
         <button class="next-round" id="next-round" type="button">Next round</button>
+        <button class="agent-button" id="agent-analysis" type="button">Analyze with agent</button>
       </div>
     </section>
 
     <section id="message" class="message" role="status"></section>
+    <section id="agent-results" class="agent-results" hidden></section>
     <section id="gallery" class="gallery" aria-live="polite"></section>
   </main>
   <script>
@@ -82,8 +85,28 @@
     }
 
     document.querySelector('#reset').addEventListener('click', async () => {
-      for (const candidate of review.candidates) await update(candidate.candidate_id, { choice: null, rating: null });
+      const response = await fetch('/api/reset-choices', { method: 'POST' });
+      const data = await response.json();
+      if (!response.ok) { setMessage(data.error || 'Could not reset choices.', true); return; }
+      review = data;
+      render();
       setMessage('All choices reset.');
+    });
+
+    document.querySelector('#new-session').addEventListener('click', async () => {
+      if (!confirm('Start a new session? Previous round feedback will be replaced.')) return;
+      const button = document.querySelector('#new-session');
+      button.disabled = true;
+      button.textContent = 'Starting...';
+      setMessage('Starting a fresh session...');
+      const response = await fetch('/api/new-session', { method: 'POST' });
+      const data = await response.json();
+      button.disabled = false;
+      button.textContent = 'New session';
+      if (!response.ok) { setMessage(data.error || 'Could not start a new session.', true); return; }
+      review = data;
+      render();
+      setMessage('New session started.');
     });
 
     document.querySelector('#next-round').addEventListener('click', async () => {
@@ -99,6 +122,24 @@
       review = data;
       render();
       setMessage(`Round ${review.round} is ready.`);
+    });
+
+    document.querySelector('#agent-analysis').addEventListener('click', async () => {
+      const button = document.querySelector('#agent-analysis');
+      button.disabled = true;
+      button.textContent = 'Starting...';
+      setMessage('The agent will analyze your rated images before SwarmUI generates five images.');
+      const response = await fetch('/api/agent-pipeline', { method: 'POST' });
+      const data = await response.json();
+      if (!response.ok) { setMessage(data.error || 'Agent analysis failed.', true); return; }
+      const poll = async () => {
+        const status = await (await fetch(`/api/agent-pipeline/${data.job_id}`)).json();
+        setMessage(status.message || 'Working...');
+        if (status.status === 'complete') { window.location.href = '/generated'; return; }
+        if (status.status === 'error') { button.disabled = false; button.textContent = 'Analyze with agent'; setMessage(status.message, true); return; }
+        setTimeout(poll, 1000);
+      };
+      poll();
     });
 
     fetch('/api/review').then(async response => {

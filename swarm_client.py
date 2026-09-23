@@ -70,16 +70,23 @@ class SwarmClient:
     def models(self) -> list[str]:
         data = self.params()
         values: list[str] = []
-        for item in data.get("list", []):
-            if item.get("id") == "model":
-                raw = item.get("values") or []
-                values.extend(str(v) for v in raw)
-        # Some versions may expose models separately.
-        for model in data.get("models", []) or []:
-            if isinstance(model, str):
+        model_registry = data.get("models", {}) or {}
+        stable_diffusion = model_registry.get("Stable-Diffusion", [])
+        for model in stable_diffusion:
+            if isinstance(model, (list, tuple)) and model:
+                values.append(str(model[0]))
+            elif isinstance(model, dict):
+                model_id = model.get("id") or model.get("name")
+                if model_id:
+                    values.append(str(model_id))
+            elif isinstance(model, str):
                 values.append(model)
-            elif isinstance(model, dict) and model.get("name"):
-                values.append(str(model["name"]))
+
+        # Support older SwarmUI responses that expose model values directly.
+        if not values:
+            for item in data.get("list", []):
+                if str(item.get("id", "")).lower() == "model":
+                    values.extend(str(value) for value in item.get("values", []) or [])
         return list(dict.fromkeys(values))
 
     def generate(

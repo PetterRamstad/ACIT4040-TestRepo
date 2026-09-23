@@ -169,9 +169,14 @@ def make_client(args: argparse.Namespace, settings: Settings) -> GenerationClien
 
 
 def choose_model(client: GenerationClient, configured: str) -> str:
-    if configured:
-        return configured
     models = client.models()
+    if configured:
+        if models and configured not in models:
+            raise SwarmError(
+                f"Invalid SwarmUI model '{configured}'. Valid models: "
+                + ", ".join(models)
+            )
+        return configured
     if not models:
         raise SwarmError(
             "No model was detected. Open SwarmUI and make sure a text-to-image model "
@@ -192,6 +197,8 @@ def command_check(args: argparse.Namespace) -> None:
     console.print("[bold]Backend status:[/]", status.get("backend_status", {}))
 
     models = client.models()
+    if not models:
+        console.print("[yellow]No Stable-Diffusion models were detected.[/]")
     table = Table(title="Detected Models")
     table.add_column("Model")
     for model in models[:20]:
