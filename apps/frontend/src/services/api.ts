@@ -1,1 +1,1 @@
-export async function api<T>(path:string,options:RequestInit={}):Promise<T>{const base=import.meta.env.VITE_API_URL||"http://localhost:8000";const r=await fetch(`${base}${path}`,options);if(!r.ok)throw new Error(`Request failed (${r.status})`);return r.json() as Promise<T>}
+export async function api<T>(path:string,options:RequestInit={}):Promise<T>{const base=import.meta.env.VITE_API_URL||"http://127.0.0.1:8000";const r=await fetch(`${base}${path}`,options);if(!r.ok)throw new Error(`Request failed (${r.status})`);return r.json() as Promise<T>}

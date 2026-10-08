@@ -1,0 +1,12 @@
+{
+  "experiment": "fixture-baseline",
+  "preference": {
+    "stability": 1.0
+  },
+  "retrieval": {
+    "recall_at_5": 1.0
+  },
+  "layout": {
+    "collision_rate": 0.0
+  }
+}
