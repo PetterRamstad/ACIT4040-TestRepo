@@ -1,0 +1,152 @@
+{
+  "tracker_schema_version": 1,
+  "project": "ACIT4040 AI Interior Design",
+  "source_plan": "C:\\Users\\pette\\Downloads\\ACIT4040_complete_project_and_dataset_plan.md",
+  "generated_on": "2026-10-08",
+  "purpose": "Step-by-step implementation tracker based on the current repository state and the supplied complete project/dataset plan.",
+  "status_values": ["done", "in_progress", "pending", "blocked"],
+  "manual_uncertainties": [
+    "Exact URL for the existing Kaggle interior-style dataset is still needed.",
+    "License/terms confirmation is required before automating restricted dataset downloads.",
+    "3D-FRONT and 3D-FUTURE availability depends on approved local archives or approved mirrors.",
+    "Production deployment target and GPU worker shape are not yet confirmed."
+  ],
+  "steps": [
+    {
+      "id": "repo-bootstrap",
+      "title": "Repository bootstrap and runnable demo shell",
+      "status": "done",
+      "done": true,
+      "summary": "The repo has Python/FastAPI, React/Vite, Makefile, Docker files, README, and smoke tests.",
+      "todo": [
+        {"text": "Create backend/frontend skeleton", "done": true},
+        {"text": "Document quick start and local pipeline", "done": true},
+        {"text": "Keep generated build artifacts out of planned source changes", "done": true}
+      ]
+    },
+    {
+      "id": "domain-vertical-slices",
+      "title": "Core domain vertical slices",
+      "status": "done",
+      "done": true,
+      "summary": "Preference learning, deterministic embeddings, retrieval fixtures, layout validation, agent orchestration, and evaluation tests exist.",
+      "todo": [
+        {"text": "Implement adaptive preference defaults with five initial candidates and 70/30 exploration policy", "done": true},
+        {"text": "Implement furniture IDs as source of truth for fixture catalog", "done": true},
+        {"text": "Implement deterministic layout validation/generation", "done": true},
+        {"text": "Keep agent orchestration above deterministic tools", "done": true}
+      ]
+    },
+    {
+      "id": "api-frontend-demo-flow",
+      "title": "API and frontend demo flow",
+      "status": "done",
+      "done": true,
+      "summary": "FastAPI routers and React pages cover health, preferences, furniture, rooms/layouts, admin status, login/register shell, preferences, and room design.",
+      "todo": [
+        {"text": "Expose fixture-backed API endpoints", "done": true},
+        {"text": "Render frontend preference and room-design screens", "done": true},
+        {"text": "Provide actionable async/error UI states", "done": true}
+      ]
+    },
+    {
+      "id": "dataset-registry-and-licensing",
+      "title": "Dataset registry, licensing, and safe acquisition status",
+      "status": "in_progress",
+      "done": false,
+      "summary": "A manifest-backed dataset registry and validation layer now records required/optional datasets, validates local fixtures, and blocks unsafe automatic acquisition.",
+      "todo": [
+        {"text": "Represent fixture, interior-style, DeepFurniture, 3D-FRONT, 3D-FUTURE, ADE20K, Objaverse, House Rooms, and Structured3D", "done": true},
+        {"text": "Return HUMAN_REQUIRED/needs_user_confirmation instead of pretending to download restricted datasets", "done": true},
+        {"text": "Add real archive validators for each approved research dataset", "done": false},
+        {"text": "Add checksum and normalized manifest output for local fixtures", "done": true},
+        {"text": "Add checksum and normalized manifest output after restricted local archives are provided", "done": false}
+      ],
+      "blocked_by": [
+        "Exact interior-style dataset URL",
+        "Approved local archives or access decisions for restricted datasets"
+      ]
+    },
+    {
+      "id": "dataset-inspection-pipeline",
+      "title": "Interior dataset inspection and preprocessing",
+      "status": "pending",
+      "done": false,
+      "summary": "The supplied plan defines folder labels and reported filename patterns; implementation should verify them before treating filename tokens as metadata. The current validation layer is ready to report this once the dataset path/source is confirmed.",
+      "todo": [
+        {"text": "Inspect files per room folder and extension", "done": true},
+        {"text": "Detect duplicate content hashes", "done": true},
+        {"text": "Detect corrupt/unreadable PNG/JPEG image files", "done": true},
+        {"text": "Verify filename split/style pattern across samples", "done": true},
+        {"text": "Emit warnings for ambiguous metadata and hard failures for configured unreadable training data", "done": false}
+      ],
+      "blocked_by": ["Dataset location/source confirmation"]
+    },
+    {
+      "id": "production-persistence",
+      "title": "Production persistence with PostgreSQL and migrations",
+      "status": "pending",
+      "done": false,
+      "summary": "The demo is fixture-backed; production entities still need SQLAlchemy/Alembic persistence.",
+      "todo": [
+        {"text": "Add SQLAlchemy models for users, sessions, preferences, furniture, rooms, designs, jobs, manifests, and experiments", "done": false},
+        {"text": "Add repositories and migrations", "done": false},
+        {"text": "Ensure large datasets remain outside PostgreSQL", "done": false}
+      ]
+    },
+    {
+      "id": "background-jobs-and-object-storage",
+      "title": "Background jobs and object storage",
+      "status": "pending",
+      "done": false,
+      "summary": "The API exposes synchronous demo behavior; production job execution and object storage are still needed.",
+      "todo": [
+        {"text": "Create resumable job model for dataset, embedding, index, generation, render, and evaluation work", "done": false},
+        {"text": "Add object-storage abstraction for furniture assets, renders, uploads, and generated images", "done": false},
+        {"text": "Expose job progress in API/frontend", "done": false}
+      ]
+    },
+    {
+      "id": "security-admin-observability",
+      "title": "Security, admin operations, and observability",
+      "status": "pending",
+      "done": false,
+      "summary": "Admin status is currently fixture/demo-level; production auth, authorization, rate limiting, and structured telemetry remain.",
+      "todo": [
+        {"text": "Implement server-side auth, sessions, password reset, and admin role checks", "done": false},
+        {"text": "Add request/job IDs and structured logs/metrics", "done": false},
+        {"text": "Add destructive-operation confirmations for admin actions", "done": false}
+      ]
+    },
+    {
+      "id": "full-production-data-access",
+      "title": "Full production/research data access",
+      "status": "blocked",
+      "done": false,
+      "summary": "Restricted datasets and production catalog data cannot be safely automated until access, source, and license decisions are made.",
+      "todo": [
+        {"text": "Confirm exact interior-style Kaggle URL", "done": false},
+        {"text": "Provide or approve DeepFurniture acquisition settings", "done": false},
+        {"text": "Provide approved 3D-FRONT/3D-FUTURE archives or approved mirrors", "done": false},
+        {"text": "Decide production furniture catalog source and rights", "done": false}
+      ],
+      "blocked_by": [
+        "User/source confirmation",
+        "Dataset terms and licensing decisions"
+      ]
+    },
+    {
+      "id": "ci-cd-production-deployment",
+      "title": "CI/CD and production deployment",
+      "status": "pending",
+      "done": false,
+      "summary": "Local quality commands exist; deployment decisions and production quality gates need finalization.",
+      "todo": [
+        {"text": "Run CI without full research datasets or model downloads", "done": false},
+        {"text": "Add large-file/secret guard checks", "done": false},
+        {"text": "Decide Vercel/API/GPU-worker deployment split", "done": false},
+        {"text": "Document production environment variables and rollout", "done": false}
+      ]
+    }
+  ]
+}

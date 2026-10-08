@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    {
+      "name": "furniture-fixture",
+      "display_name": "Tiny Furniture Fixture",
+      "purpose": "CI, local development, and deterministic demo retrieval/layout tests.",
+      "required": true,
+      "profile": "dev",
+      "acquisition": "local_fixture",
+      "status": "available",
+      "license_status": "project_fixture",
+      "source": "repository",
+      "version": "v1",
+      "preprocessing_version": "v1",
+      "path": "data/fixtures/furniture.json",
+      "notes": [
+        "Small JSON fixture is intentionally committed.",
+        "Used when full research datasets are unavailable."
+      ],
+      "open_questions": []
+    },
+    {
+      "name": "interior-style",
+      "display_name": "Existing Interior-Style Dataset",
+      "purpose": "Preference learning, style-aware retrieval, adaptive preference rounds, and visual embedding experiments.",
+      "required": true,
+      "profile": "research",
+      "acquisition": "confirm_source_url",
+      "status": "needs_user_confirmation",
+      "license_status": "unknown_until_exact_source_confirmed",
+      "source": "kaggle",
+      "source_url": null,
+      "version": "unknown",
+      "preprocessing_version": "v1",
+      "path": "data/raw/interior-style",
+      "notes": [
+        "Room folder structure is confirmed from the supplied plan.",
+        "Filename metadata must remain unverified until inspection confirms the convention."
+      ],
+      "open_questions": [
+        "Need the exact Kaggle URL previously added by the user.",
+        "Need license/terms review before redistribution or production usage."
+      ]
+    },
+    {
+      "name": "deepfurniture",
+      "display_name": "DeepFurniture",
+      "purpose": "Furniture detection, segmentation, furniture identity retrieval, and furniture embedding experiments.",
+      "required": true,
+      "profile": "research",
+      "acquisition": "explicit_download",
+      "status": "human_required",
+      "license_status": "record_before_use",
+      "source": "huggingface",
+      "source_url": "https://huggingface.co/datasets/Dalby123/DeepFurniture",
+      "version": "pin_before_download",
+      "preprocessing_version": "v1",
+      "path": "data/raw/deepfurniture",
+      "notes": [
+        "Do not download the full dataset during normal setup or CI.",
+        "Use resumable acquisition and manifests for research profile only."
+      ],
+      "open_questions": []
+    },
+    {
+      "name": "3d-front",
+      "display_name": "3D-FRONT",
+      "purpose": "Room layouts, room geometry, furniture placement, scene reconstruction, and layout evaluation.",
+      "required": true,
+      "profile": "research",
+      "acquisition": "manual_archive",
+      "status": "human_required",
+      "license_status": "terms_acceptance_required",
+      "source": "official",
+      "source_url": "https://tianchi.aliyun.com/specials/promotion/alibaba-3d-scene-dataset",
+      "version": "pin_from_archive",
+      "preprocessing_version": "v1",
+      "path": "data/raw/3d-front",
+      "notes": [
+        "The pipeline must not accept dataset terms on the user's behalf.",
+        "Place an approved local archive before preprocessing."
+      ],
+      "open_questions": [
+        "Do you already have approved 3D-FRONT archives?"
+      ]
+    },
+    {
+      "name": "3d-future",
+      "display_name": "3D-FUTURE",
+      "purpose": "3D furniture models, textures, dimensions, and room-layout visualization assets.",
+      "required": true,
+      "profile": "research",
+      "acquisition": "manual_archive",
+      "status": "human_required",
+      "license_status": "terms_acceptance_required",
+      "source": "official_or_approved_mirror",
+      "source_url": "https://tianchi.aliyun.com/specials/promotion/alibaba-3d-future",
+      "version": "pin_from_archive",
+      "preprocessing_version": "v1",
+      "path": "data/raw/3d-future",
+      "notes": [
+        "Do not hardcode a single mirror as authoritative.",
+        "Record exact source provenance in the manifest."
+      ],
+      "open_questions": [
+        "Do you already have approved 3D-FUTURE model and texture archives?"
+      ]
+    },
+    {
+      "name": "ade20k",
+      "display_name": "ADE20K",
+      "purpose": "Optional scene understanding, semantic segmentation, and scene parsing research.",
+      "required": false,
+      "profile": "research",
+      "acquisition": "manual_registration",
+      "status": "optional",
+      "license_status": "registration_required",
+      "source": "official",
+      "source_url": "https://ade20k.csail.mit.edu/",
+      "version": "pin_after_registration",
+      "preprocessing_version": "v1",
+      "path": "data/raw/ade20k",
+      "notes": [
+        "Not mandatory for the first recommendation MVP."
+      ],
+      "open_questions": []
+    },
+    {
+      "name": "objaverse",
+      "display_name": "Objaverse",
+      "purpose": "Optional filtered 3D furniture asset expansion.",
+      "required": false,
+      "profile": "research",
+      "acquisition": "explicit_download",
+      "status": "optional",
+      "license_status": "per_asset_license_required",
+      "source": "official",
+      "source_url": "https://objaverse.allenai.org/",
+      "version": "filtered_subset_only",
+      "preprocessing_version": "v1",
+      "path": "data/raw/objaverse",
+      "notes": [
+        "Never download the full dataset.",
+        "Preserve individual asset license metadata."
+      ],
+      "open_questions": []
+    },
+    {
+      "name": "house-rooms",
+      "display_name": "House Rooms Image Dataset",
+      "purpose": "Optional room-type experiments and UI examples.",
+      "required": false,
+      "profile": "research",
+      "acquisition": "confirm_source_url",
+      "status": "optional",
+      "license_status": "verify_before_use",
+      "source": "kaggle",
+      "source_url": "https://www.kaggle.com/datasets/robinreni/house-rooms-image-dataset",
+      "version": "pin_before_download",
+      "preprocessing_version": "v1",
+      "path": "data/raw/house-rooms",
+      "notes": [
+        "Keep optional until labels and license fit the final system."
+      ],
+      "open_questions": []
+    },
+    {
+      "name": "structured3d",
+      "display_name": "Structured3D",
+      "purpose": "Optional synthetic room/layout evaluation.",
+      "required": false,
+      "profile": "research",
+      "acquisition": "confirm_source_url",
+      "status": "optional",
+      "license_status": "verify_before_use",
+      "source": "kaggle_or_official",
+      "source_url": "https://www.kaggle.com/datasets/zara2099/structured-3d-dataset",
+      "version": "pin_before_download",
+      "preprocessing_version": "v1",
+      "path": "data/raw/structured3d",
+      "notes": [
+        "Do not add to the automatic full pipeline unless a concrete experiment requires it."
+      ],
+      "open_questions": []
+    }
+  ]
+}
