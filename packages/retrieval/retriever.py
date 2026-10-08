@@ -1,4 +1,6 @@
 from .providers.fixture import FixtureFurnitureProvider
+
+
 class FurnitureRetriever:
     def __init__(self,provider=None): self.provider=provider or FixtureFurnitureProvider()
     def retrieve(self,preference=None,filters=None,limit=10):

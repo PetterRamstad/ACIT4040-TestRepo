@@ -1,5 +1,7 @@
 from packages.preference.engine import PreferenceEngine
 from packages.retrieval.providers.fixture import FixtureFurnitureProvider
+
+
 def test_initial_round_has_five():
  e=PreferenceEngine(); assert len(e.initial_candidates(FixtureFurnitureProvider().list_items()))==5
 def test_feedback_reduces_uncertainty():

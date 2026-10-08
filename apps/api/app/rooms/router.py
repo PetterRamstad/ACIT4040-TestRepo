@@ -1,6 +1,8 @@
-from fastapi import APIRouter,HTTPException
+from fastapi import APIRouter, HTTPException
+
 from .schemas import RoomCreate
-rooms={}
+
+rooms: dict[str, dict[str, object]] = {}
 router=APIRouter(prefix="/rooms",tags=["rooms"])
 @router.post("")
 def create_room(payload:RoomCreate):

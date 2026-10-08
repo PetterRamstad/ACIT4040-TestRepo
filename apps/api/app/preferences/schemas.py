@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 
+
 class Feedback(BaseModel):
     candidate_id:str
     value:str=Field(pattern="^(like|neutral|dislike)$")

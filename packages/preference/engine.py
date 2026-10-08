@@ -1,7 +1,8 @@
-from .models import PreferenceState
 from .candidate_selection import select_candidates
-from .stability import is_stable
 from .config import INITIAL_ROUND_SIZE
+from .models import PreferenceState
+from .stability import is_stable
+
 
 class PreferenceEngine:
     def initial_state(self): return PreferenceState()

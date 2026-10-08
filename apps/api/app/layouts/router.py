@@ -1,8 +1,10 @@
 from fastapi import APIRouter
-from packages.layout.models import Room,Layout,Placement
+
 from packages.layout.constraints import LayoutValidator
 from packages.layout.generator import LayoutEngine
+from packages.layout.models import Layout, Placement, Room
 from packages.retrieval.providers.fixture import FixtureFurnitureProvider
+
 router=APIRouter(prefix="/layouts",tags=["layouts"])
 @router.post("/validate")
 def validate(payload:dict):

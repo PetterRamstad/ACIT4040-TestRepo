@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
+
 from packages.retrieval.furniture_models import FurnitureItem
+
 
 class FixtureFurnitureProvider:
     def __init__(self,path=None): self.path=Path(path or "data/fixtures/furniture.json")

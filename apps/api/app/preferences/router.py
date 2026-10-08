@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from .schemas import Feedback,PreferenceStateResponse
+
+from .schemas import Feedback, PreferenceStateResponse
 from .service import service
 
 router=APIRouter(prefix="/preferences",tags=["preferences"])

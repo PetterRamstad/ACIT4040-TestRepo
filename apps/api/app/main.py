@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from apps.api.app.preferences.router import router as preference_router
-from apps.api.app.furniture.router import router as furniture_router
-from apps.api.app.rooms.router import router as room_router
-from apps.api.app.layouts.router import router as layout_router
-from apps.api.app.agent.router import router as agent_router
 from apps.api.app.admin.router import router as admin_router
+from apps.api.app.agent.router import router as agent_router
+from apps.api.app.furniture.router import router as furniture_router
+from apps.api.app.layouts.router import router as layout_router
+from apps.api.app.preferences.router import router as preference_router
+from apps.api.app.rooms.router import router as room_router
 
 app=FastAPI(title="ACIT4040 Interior Design API",version="0.1.0")
 app.add_middleware(CORSMiddleware,allow_origins=["http://localhost:5173"],allow_credentials=True,allow_methods=["*"],allow_headers=["*"])

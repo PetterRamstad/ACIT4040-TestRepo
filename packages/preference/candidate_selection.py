@@ -1,5 +1,6 @@
-from .models import PreferenceCandidate,PreferenceState
-from .config import INITIAL_ROUND_SIZE,LIKELY_RATIO
+from .config import INITIAL_ROUND_SIZE, LIKELY_RATIO
+from .models import PreferenceCandidate, PreferenceState
+
 
 def select_candidates(ids:list[str],state:PreferenceState,size:int=INITIAL_ROUND_SIZE)->list[PreferenceCandidate]:
     pool=[i for i in ids if i not in state.liked and i not in state.disliked]

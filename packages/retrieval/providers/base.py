@@ -1,5 +1,8 @@
 from typing import Protocol
+
 from packages.retrieval.furniture_models import FurnitureItem
+
+
 class FurnitureProvider(Protocol):
     def list_items(self)->list[FurnitureItem]: ...
     def get_item(self,item_id:str)->FurnitureItem: ...

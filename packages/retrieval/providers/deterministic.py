@@ -1,4 +1,6 @@
 import hashlib
+
+
 class DeterministicEmbeddingProvider:
     model_version="fixture-embedding-v1"
     def __init__(self,dimension=32): self.dimension=dimension

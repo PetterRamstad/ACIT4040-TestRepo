@@ -1,4 +1,3 @@
-from .models import Room,Layout
 def validate(room,layout):
     violations=[]
     for p in layout.placements:

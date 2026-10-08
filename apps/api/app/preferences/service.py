@@ -1,6 +1,7 @@
 from packages.preference.engine import PreferenceEngine
 from packages.retrieval.providers.fixture import FixtureFurnitureProvider
 
+
 class PreferenceService:
     def __init__(self):
         self.engine=PreferenceEngine()

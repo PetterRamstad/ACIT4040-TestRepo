@@ -1,4 +1,6 @@
-from dataclasses import dataclass,field
+from dataclasses import dataclass, field
+
+
 @dataclass(frozen=True)
 class Room: width:float; depth:float; doors:list[tuple[float,float,float,float]]=field(default_factory=list)
 @dataclass(frozen=True)

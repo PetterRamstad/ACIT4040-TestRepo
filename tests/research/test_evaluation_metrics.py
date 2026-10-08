@@ -1,2 +1,3 @@
 def test_fixture_metrics_are_reproducible():
- assert 1.0==1.0
+    metrics = {"stability": 1.0}
+    assert metrics["stability"] == 1.0

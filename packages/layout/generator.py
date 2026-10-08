@@ -1,5 +1,6 @@
-from .models import Layout,Placement,Room
 from .constraints import validate
+from .models import Layout, Placement
+
 
 class LayoutEngine:
     def generate(self,room,furniture):

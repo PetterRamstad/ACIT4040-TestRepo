@@ -1,6 +1,8 @@
-from fastapi import APIRouter,HTTPException
-from .service import service
+from fastapi import APIRouter, HTTPException
+
 from .schemas import FurnitureFeedback
+from .service import service
+
 router=APIRouter(prefix="/furniture",tags=["furniture"])
 @router.get("")
 def list_furniture(): return service.list()
