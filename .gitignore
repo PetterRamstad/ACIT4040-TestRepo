@@ -5,6 +5,7 @@ __pycache__/
 node_modules/
 dist/
 .env
+.pipeline/
 .venv/
 *.pyc
 .superpowers/sdd/

@@ -26,3 +26,12 @@ evaluate:
 
 e2e:
 	$(PYTEST) tests/e2e -q
+
+pipeline:
+	python scripts/pipeline.py full
+
+pipeline-dry-run:
+	python scripts/pipeline.py full --dry-run
+
+production-check:
+	python scripts/pipeline.py production-check --profile production
