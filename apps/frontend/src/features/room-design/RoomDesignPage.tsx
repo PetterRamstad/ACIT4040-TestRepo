@@ -1,0 +1,1 @@
+import {RoomScene} from "../../components/scene/RoomScene"; export function RoomDesignPage(){return <RoomScene/>}

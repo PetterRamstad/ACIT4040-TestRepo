@@ -1,0 +1,1 @@
+export function AsyncState({status}:{status:string}){return <p role="status">{status}</p>}

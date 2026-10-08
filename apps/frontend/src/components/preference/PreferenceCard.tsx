@@ -1,0 +1,1 @@
+export function PreferenceCard({id}:{id:string}){return <article><h3>{id}</h3><button>Like</button><button>Dislike</button></article>}

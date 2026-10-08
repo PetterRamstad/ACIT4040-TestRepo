@@ -1,0 +1,1 @@
+export function FurnitureInspector({id}:{id:string}){return <aside><h2>{id}</h2><button>Keep</button><button>Replace</button><button>Remove</button><button>Like</button><button>Dislike</button></aside>}

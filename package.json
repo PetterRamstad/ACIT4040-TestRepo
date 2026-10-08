@@ -1,0 +1,1 @@
+{"name":"acit4040","private":true,"scripts":{"test":"pytest","lint":"ruff check .","typecheck":"mypy apps/api packages","build":"npm --prefix apps/frontend run build"},"devDependencies":{}}

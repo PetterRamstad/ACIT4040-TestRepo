@@ -1,0 +1,1 @@
+import {PreferenceRound} from "../../components/preference/PreferenceRound"; export function PreferencePage(){return <PreferenceRound ids={[]}/> }

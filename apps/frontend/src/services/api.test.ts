@@ -1,0 +1,1 @@
+import {describe,it,expect} from "vitest"; describe("api",()=>it("exports client",async()=>{const m=await import("./api");expect(m.api).toBeTypeOf("function")}))

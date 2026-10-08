@@ -1,0 +1,1 @@
+export function RegisterPage(){return <form><label>Email<input type="email" /></label><button>Create account</button></form>}

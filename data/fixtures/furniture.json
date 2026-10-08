@@ -1,0 +1,164 @@
+[
+  {
+    "id": "chair-001",
+    "source": "fixture",
+    "source_id": "chair-001",
+    "name": "Oak Lounge Chair",
+    "category": "chair",
+    "room_types": [
+      "living_room"
+    ],
+    "style": [
+      "scandinavian"
+    ],
+    "colors": [
+      "oak",
+      "beige"
+    ],
+    "materials": [
+      "wood",
+      "fabric"
+    ],
+    "dimensions": [
+      0.8,
+      0.8,
+      0.9
+    ],
+    "image_path": "/fixtures/chair-001.jpg",
+    "model_path": "/fixtures/chair-001.glb"
+  },
+  {
+    "id": "sofa-001",
+    "source": "fixture",
+    "source_id": "sofa-001",
+    "name": "Neutral Sofa",
+    "category": "sofa",
+    "room_types": [
+      "living_room"
+    ],
+    "style": [
+      "modern",
+      "scandinavian"
+    ],
+    "colors": [
+      "beige"
+    ],
+    "materials": [
+      "fabric"
+    ],
+    "dimensions": [
+      2.2,
+      0.9,
+      0.85
+    ],
+    "image_path": "/fixtures/sofa-001.jpg",
+    "model_path": "/fixtures/sofa-001.glb"
+  },
+  {
+    "id": "table-001",
+    "source": "fixture",
+    "source_id": "table-001",
+    "name": "Round Oak Table",
+    "category": "table",
+    "room_types": [
+      "living_room",
+      "dining_room"
+    ],
+    "style": [
+      "scandinavian"
+    ],
+    "colors": [
+      "oak"
+    ],
+    "materials": [
+      "wood"
+    ],
+    "dimensions": [
+      1.1,
+      1.1,
+      0.75
+    ],
+    "image_path": "/fixtures/table-001.jpg",
+    "model_path": "/fixtures/table-001.glb"
+  },
+  {
+    "id": "lamp-001",
+    "source": "fixture",
+    "source_id": "lamp-001",
+    "name": "Floor Lamp",
+    "category": "lamp",
+    "room_types": [
+      "living_room",
+      "bedroom"
+    ],
+    "style": [
+      "modern"
+    ],
+    "colors": [
+      "black"
+    ],
+    "materials": [
+      "metal"
+    ],
+    "dimensions": [
+      0.3,
+      0.3,
+      1.5
+    ],
+    "image_path": "/fixtures/lamp-001.jpg",
+    "model_path": "/fixtures/lamp-001.glb"
+  },
+  {
+    "id": "rug-001",
+    "source": "fixture",
+    "source_id": "rug-001",
+    "name": "Wool Rug",
+    "category": "rug",
+    "room_types": [
+      "living_room"
+    ],
+    "style": [
+      "scandinavian"
+    ],
+    "colors": [
+      "beige"
+    ],
+    "materials": [
+      "wool"
+    ],
+    "dimensions": [
+      2.0,
+      1.5,
+      0.05
+    ],
+    "image_path": "/fixtures/rug-001.jpg",
+    "model_path": "/fixtures/rug-001.glb"
+  },
+  {
+    "id": "shelf-001",
+    "source": "fixture",
+    "source_id": "shelf-001",
+    "name": "Open Shelf",
+    "category": "shelf",
+    "room_types": [
+      "living_room",
+      "bedroom"
+    ],
+    "style": [
+      "modern"
+    ],
+    "colors": [
+      "oak"
+    ],
+    "materials": [
+      "wood"
+    ],
+    "dimensions": [
+      1.0,
+      0.35,
+      1.8
+    ],
+    "image_path": "/fixtures/shelf-001.jpg",
+    "model_path": "/fixtures/shelf-001.glb"
+  }
+]

@@ -1,0 +1,1 @@
+export type AuthState={authenticated:boolean}; export function logout(){localStorage.removeItem("session")}

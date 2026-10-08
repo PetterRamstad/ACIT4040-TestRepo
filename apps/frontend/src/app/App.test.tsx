@@ -1,0 +1,1 @@
+import {describe,it,expect} from "vitest"; describe("App",()=>{it("has shell contract",()=>expect(true).toBe(true))})

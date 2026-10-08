@@ -1,0 +1,1 @@
+export const routes=["/login","/register","/preferences","/design"] as const;

@@ -1,0 +1,1 @@
+export function FurnitureMesh({id}:{id:string}){return <div data-furniture-id={id}/> }

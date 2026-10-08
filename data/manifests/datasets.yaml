@@ -1,0 +1,6 @@
+datasets:
+  furniture-fixture:
+    version: v1
+    source: local-fixture
+    path: data/fixtures/furniture.json
+    preprocessing_version: v1

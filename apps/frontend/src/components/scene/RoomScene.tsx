@@ -1,0 +1,1 @@
+export function RoomScene(){return <div role="img" aria-label="3D room scene">Room scene placeholder</div>}
